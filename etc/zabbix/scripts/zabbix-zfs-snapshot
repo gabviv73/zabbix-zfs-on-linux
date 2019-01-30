@@ -1,0 +1,30 @@
+#!/bin/bash
+# Delay maximum half an hour
+set -x 
+if [ -z "$1" ]
+then
+	sleep $((RANDOM % 1800))
+fi
+
+# Clear temp file
+/bin/rm -f /tmp/zfs-snapshot.dat.tmp
+
+# Append lines in temp file
+for DATASET in $(/usr/bin/sudo /sbin/zfs list \
+					| grep -v '^NAME' \
+					| /usr/bin/tr -s ' ' | /usr/bin/cut -f 1 --delimiter=' ')
+do 
+	TIMESTAMP=$(/usr/bin/sudo \
+					/sbin/zfs get creation -Hpr -t snapshot  ${DATASET} \
+					| /usr/bin/cut -f 3 | /usr/bin/sort -n | /usr/bin/tail -n 1) 
+	if [ -z "$TIMESTAMP" ]
+	then
+		DATETIME=""
+	else
+		DATETIME=$(/bin/date -d @$TIMESTAMP +"%Y-%m-%d %H:%M:%S")
+	fi
+	echo ${DATASET} $TIMESTAMP $DATETIME >> /tmp/zfs-snapshot.dat.tmp
+done
+
+# Substitute real file with temp file
+mv /tmp/zfs-snapshot.dat.tmp /var/lib/zabbix/zfs-snapshot.dat

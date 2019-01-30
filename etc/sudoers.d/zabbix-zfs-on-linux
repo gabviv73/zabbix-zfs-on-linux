@@ -1,0 +1,2 @@
+# Add this file to the folder "/etc/sudoers.d" to allow zabbix to monitor zfs pool and dataset
+zabbix	ALL = (ALL) NOPASSWD: /sbin/zpool list *, /sbin/zfs list *, /sbin/zfs get *, /sbin/zpool status *
