@@ -1,6 +1,6 @@
 #!/bin/bash
 # Delay maximum half an hour
-set -x 
+#set -x 
 if [ -z "$1" ]
 then
 	sleep $((RANDOM % 1800))
