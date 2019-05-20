@@ -1,0 +1,10 @@
+Package: zabbix-zfs-on-linux
+Version: 1.0.0-2019052001
+Section: net
+Priority: optional
+Architecture: all
+Depends: zabbix-agent (>=4.0)
+Maintainer: Gabriele Vivinetto <gabriele.mailing@rvmgroup.it>
+Description: Zabbiz agent scripts to monitor ZFS On Linux
+ These scripts monitor ZFS Pools, Datasets and Snapshots.
+

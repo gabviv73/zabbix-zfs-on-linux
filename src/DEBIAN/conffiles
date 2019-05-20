@@ -1,0 +1,3 @@
+/etc/cron.d/zabbix-zfs-snapshot
+/etc/zabbix/zabbix_agentd.d/zfs-on-linux.conf
+/etc/sudoers.d/zabbix-zfs-on-linux
