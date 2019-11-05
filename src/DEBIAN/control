@@ -1,5 +1,5 @@
 Package: zabbix-zfs-on-linux
-Version: 1.0.0-2019071601
+Version: 1.0.0-2019110501
 Section: net
 Priority: optional
 Architecture: all
